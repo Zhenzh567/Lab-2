@@ -1,48 +1,48 @@
 #include <iostream>
 #include <bitset>
-#include <string>
-int main(){
-    int A;
+
+int main() {
+    short A;
     int i;
-    int b;
-    std::cin>>A;
-    std::cin>>i;
-    std::cin>>b;
-    std::string s = std::bitset<32>(A).to_string();
-    s = s.substr(s.find("1"));
-    std::cout<<s<<std::endl;
-    if (i<=s.length()-1){
-        if (s[i] == '0'){
-            char f = s[i];
-            s[i] = s[0];
-            s[0] = f;
+    std::cin >> A;
+    std::cin >> i;
+    if (i<0 || i>7){
+        std::cout<<"Error"<<std::endl;
+    }
+    else{
+        std::bitset<8>bit(A);
+        std::cout << bit <<"\n";
+        int biti = 1 & (A>>i); 
+        std::cout << biti<<"\n";
+        if (biti==0){
+            unsigned int bit0 = A&1;
+            A ^=(1<<i);
+            A ^= 1;
+            std::bitset<8>s(A);
+            std::cout<<s<<std::endl;
+
 
         }
         else{
-            if ((abs(A)==abs(i)) || (abs(i)==abs(b)) || (abs(A)==abs(b))){
+            int v;
+            int b;
+            int c;
+            std::cin>>v;
+            std::cin>>b;
+            std::cin>>c;
+            if (abs(v)==abs(b)||abs(v)==abs(c)||abs(c)==abs(b)){
                 std::cout<<"Code zero"<<std::endl;
             }
             else{
-                double v = double((abs(A)+abs(i)+abs(b)))/3;
-                std::cout<<v<<std::endl;
+                double z = static_cast<double>(abs(v)+abs(b)+abs(c))/3;
+                std::cout<<z<<std::endl;
             }
-
         }
-        std::cout<<s<<std::endl;
-
-
-
     }
-    else{
-        std::cout<<"ERROR"<<std::endl;
-    }
-
-
-    
-return 0;
-
-
-
-
 
 }
+
+
+
+
+
